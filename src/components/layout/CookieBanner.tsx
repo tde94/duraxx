@@ -73,7 +73,7 @@ export default function CookieBanner() {
                   </>
                 ) : (
                   <>
-                    We use cookies to improve your experience on our website. By clicking "Accept All", you agree to our use of cookies. Find details in our{" "}
+                    We use cookies to improve your experience on our website. By clicking &quot;Accept All&quot;, you agree to our use of cookies. Find details in our{" "}
                     <Link href="/datenschutz" className="text-[#00C2A8] hover:underline font-bold">
                       Privacy Policy
                     </Link>.
