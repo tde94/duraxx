@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { companyInfo } from "@/data/company";
 import { useLanguage } from "@/context/LanguageContext";
 import { MapPin, Mail, Phone, Clock, FileText, Send, CheckCircle2 } from "lucide-react";
+import { submitContactForm } from "./actions";
 
 function ContactFormSection() {
   const { t } = useLanguage();
@@ -23,6 +24,8 @@ function ContactFormSection() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Sync B2B interest pre-fill from query param
   useEffect(() => {
@@ -44,22 +47,32 @@ function ContactFormSection() {
     }
   }, [interestParam]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        companyName: "",
-        vatId: "",
-        email: "",
-        phone: "",
-        interest: "batteries",
-        message: "",
-      });
-    }, 4000);
+    setIsSubmitting(true);
+    
+    try {
+      await submitContactForm(formData);
+      
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          companyName: "",
+          vatId: "",
+          email: "",
+          phone: "",
+          interest: "batteries",
+          message: "",
+        });
+      }, 4000);
+    } catch (error) {
+      alert("Message could not be sent. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -247,14 +260,13 @@ function ContactFormSection() {
                     </div>
                     {/* VAT ID */}
                     <div className="space-y-1.5">
-                      <label htmlFor="vatId" className="text-xs font-bold text-brand-navy/70 uppercase">
-                        {t("contactPage.vatId")}
+                      <label htmlFor="vatId" className="text-xs font-bold text-brand-navy/70 uppercase flex items-center gap-1.5">
+                        {t("contactPage.vatId")} <span className="text-[10px] text-slate-400 font-normal lowercase">(optional)</span>
                       </label>
                       <input
                         type="text"
                         name="vatId"
                         id="vatId"
-                        required
                         placeholder="e.g. DE123456789"
                         value={formData.vatId}
                         onChange={handleChange}

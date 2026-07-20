@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import CookieBanner from "@/components/layout/CookieBanner";
 import { LanguageProvider } from "@/context/LanguageContext";
+import MainLayoutWrapper from "@/components/layout/MainLayoutWrapper";
+import VisitorTracker from "@/components/layout/VisitorTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,13 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="font-sans antialiased text-brand-navy bg-brand-bg flex flex-col min-h-screen">
+        <VisitorTracker />
         <LanguageProvider>
-          <Header />
-          <main className="flex-grow pt-20 lg:pt-24">
+          <MainLayoutWrapper>
             {children}
-          </main>
-          <Footer />
-          <CookieBanner />
+          </MainLayoutWrapper>
         </LanguageProvider>
       </body>
     </html>

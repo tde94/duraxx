@@ -114,13 +114,13 @@ export default function Header() {
             </div>
 
             <Link
-              href="/videos"
+              href="/media"
               className={`text-sm font-semibold tracking-wide hover:text-brand-turquoise transition-colors duration-200 relative ${
-                pathname === "/videos" ? "text-brand-turquoise" : "text-brand-navy"
+                pathname === "/media" ? "text-brand-turquoise" : "text-brand-navy"
               }`}
             >
-              {t("header.videos")}
-              {pathname === "/videos" && (
+              {t("header.media")}
+              {pathname === "/media" && (
                 <motion.span
                   layoutId="activeNav"
                   className="absolute bottom-[-6px] left-0 right-0 h-[2px] bg-brand-turquoise"
@@ -168,14 +168,6 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Customer Login Button */}
-            <Link
-              href={companyInfo.portalUrl}
-              className="flex items-center space-x-1.5 bg-brand-navy hover:bg-brand-turquoise text-white px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-brand-turquoise/25"
-            >
-              <span>{t("header.login")}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -224,11 +216,11 @@ export default function Header() {
               </div>
 
               <Link
-                href="/videos"
+                href="/media"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block text-base font-bold text-brand-navy py-2 border-b border-slate-50"
               >
-                {t("header.videos")}
+                {t("header.media")}
               </Link>
 
               <Link
@@ -275,14 +267,7 @@ export default function Header() {
                   </div>
                 </div>
 
-                <Link
-                  href={companyInfo.portalUrl}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-center space-x-1.5 bg-brand-navy text-white px-5 py-3 rounded-lg text-sm font-bold tracking-wide w-full sm:w-auto"
-                >
-                  <span>{t("header.login")}</span>
-                  <ExternalLink className="w-4 h-4" />
-                </Link>
+
               </div>
             </div>
           </motion.div>

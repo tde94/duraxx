@@ -117,8 +117,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/videos" className="hover:text-brand-turquoise transition-colors">
-                  {t("header.videos")}
+                <Link href="/media" className="hover:text-brand-turquoise transition-colors">
+                  {t("header.media")}
                 </Link>
               </li>
               <li>
@@ -126,14 +126,7 @@ export default function Footer() {
                   {t("header.contact")}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href={companyInfo.portalUrl}
-                  className="hover:text-brand-turquoise transition-colors flex items-center space-x-1"
-                >
-                  <span>{t("header.login")}</span>
-                </Link>
-              </li>
+
             </ul>
           </div>
 

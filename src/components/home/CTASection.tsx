@@ -38,14 +38,6 @@ export default function CTASection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-              {/* Customer Portal Link */}
-              <Link
-                href={companyInfo.portalUrl}
-                className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-brand-turquoise hover:bg-teal-400 text-brand-navy font-bold px-8 py-4 rounded-xl text-sm tracking-wide transition-all duration-300 shadow-lg shadow-brand-turquoise/20 group"
-              >
-                <span>{t("cta.portalBtn")}</span>
-                <ExternalLink className="w-4 h-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
-              </Link>
 
               {/* Contact Link */}
               <Link

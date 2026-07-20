@@ -4,26 +4,31 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Gift } from "lucide-react";
 
-export default function PromoBanner() {
+export default function PromoBanner({ announcement }: { announcement?: any }) {
   const [isVisible, setIsVisible] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     // Avoid flash on mount and check local storage to persist dismissal
-    const dismissed = localStorage.getItem("duraxx_promo_dismissed");
+    const dismissed = localStorage.getItem(`duraxx_promo_dismissed_${announcement?.id}`);
     if (dismissed === "true") {
       setIsVisible(false);
     }
     setIsMounted(true);
-  }, []);
+  }, [announcement?.id]);
 
   const handleDismiss = () => {
     setIsVisible(false);
-    localStorage.setItem("duraxx_promo_dismissed", "true");
+    if (announcement?.id) {
+      localStorage.setItem(`duraxx_promo_dismissed_${announcement.id}`, "true");
+    }
   };
 
-  // Scrolling birthday greeting text repeating
-  const marqueeText = "Alles Gute zum Geburtstag Mustafa Cansu iyiki varsın seni seviyoruz ❤️ ";
+  // If no announcement is provided, don't render anything
+  if (!announcement || !isMounted || !isVisible) return null;
+
+  // Scrolling greeting text repeating
+  const marqueeText = `${announcement.title} - ${announcement.description} `;
   const repeatedMarquee = Array(12).fill(marqueeText).join("   •   ");
 
   if (!isMounted || !isVisible) return null;

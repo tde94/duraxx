@@ -2,7 +2,7 @@ export interface TranslationSchema {
   header: {
     aboutUs: string;
     products: string;
-    videos: string;
+    media: string;
     contact: string;
     login: string;
     categories: string;
@@ -125,16 +125,15 @@ export interface TranslationSchema {
     submitBtn: string;
     interests: Record<string, string>;
   };
-  videosPage: {
+  mediaPage: {
     badge: string;
     title: string;
     desc: string;
-    walkthrough: string;
-    list: Array<{
-      title: string;
-      category: string;
-      description: string;
-    }>;
+    tabs: {
+      all: string;
+    };
+    watchVideo: string;
+    viewImage: string;
   };
 }
 
@@ -143,7 +142,7 @@ export const translations: Record<"EN" | "DE", TranslationSchema> = {
     header: {
       aboutUs: "About Us",
       products: "Products",
-      videos: "Videos",
+      media: "Media Center",
       contact: "Contact",
       login: "Customer Login",
       categories: "Categories",
@@ -411,35 +410,22 @@ export const translations: Record<"EN" | "DE", TranslationSchema> = {
         audiology: "Audiological Accessories",
       },
     },
-    videosPage: {
+    mediaPage: {
       badge: "Media Library",
-      title: "Videos & Walkthroughs",
-      desc: "Explore our video library featuring product guides, equipment setup instructions, and clinical audiology tutorials.",
-      walkthrough: "Interactive Walkthrough",
-      list: [
-        {
-          title: "VARTA Comfort Premium Production Line",
-          category: "Production",
-          description: "Go behind the scenes of high-precision German battery production and quality testing facilities.",
-        },
-        {
-          title: "Detax Ear Impression Silicone Application",
-          category: "Tutorial",
-          description: "Step-by-step clinical walkthrough showing correct silicone preparation, otoscopy, and syringe technique.",
-        },
-        {
-          title: "Earmold Lab Light-Curing Chamber Calibration",
-          category: "Equipment",
-          description: "Detailed calibration and light frequency setup guide for UV lab units to ensure bubble-free earmold lacquering.",
-        },
-      ],
+      title: "Videos, Images & Documents",
+      desc: "Explore our library featuring product guides, event galleries, and clinical audiology resources.",
+      tabs: {
+        all: "All",
+      },
+      watchVideo: "Watch Video",
+      viewImage: "View Image",
     },
   },
   DE: {
     header: {
       aboutUs: "Über uns",
       products: "Produkte",
-      videos: "Videos",
+      media: "Mediathek",
       contact: "Kontakt",
       login: "Kunden-Login",
       categories: "Kategorien",
@@ -707,28 +693,15 @@ export const translations: Record<"EN" | "DE", TranslationSchema> = {
         audiology: "Audiologie-Zubehör",
       },
     },
-    videosPage: {
+    mediaPage: {
       badge: "Mediathek",
-      title: "Videos & Anleitungen",
-      desc: "Entdecken Sie nützliche Video-Tutorials zu Produktanwendungen, Laboraufbauten und klinischen Obergurt-Richtlinien.",
-      walkthrough: "Interaktive Anleitung",
-      list: [
-        {
-          title: "VARTA Comfort Premium-Produktionslinie",
-          category: "Produktion",
-          description: "Erhalten Sie Einblicke in die hochpräzise deutsche Batterieherstellung und Qualitätssicherung.",
-        },
-        {
-          title: "Detax Silikon-Abformung am Gehörgang",
-          category: "Anleitung",
-          description: "Schritt-für-Schritt-Video zur Vorbereitung des Abformmaterials, Otoskopie und Injektionstechnik.",
-        },
-        {
-          title: "Kalibrierung von UV-Polymerisationskammern",
-          category: "Laborausstattung",
-          description: "Detaillierte Anleitung zur Frequenzeinstellung von Labor-Lichthärtern für blasenfreie Lackierungen.",
-        },
-      ],
+      title: "Videos, Bilder & Dokumente",
+      desc: "Entdecken Sie nützliche Video-Tutorials, Messe-Galerien und klinische Ressourcen.",
+      tabs: {
+        all: "Alle",
+      },
+      watchVideo: "Video ansehen",
+      viewImage: "Bild anzeigen",
     },
   },
 };

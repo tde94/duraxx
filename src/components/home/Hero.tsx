@@ -128,12 +128,6 @@ export default function Hero() {
                 <span>{t("hero.quoteBtn")}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link
-                href={companyInfo.portalUrl}
-                className="bg-white/10 hover:bg-white/20 border border-white/15 text-white font-bold px-6 py-3.5 rounded-lg text-sm tracking-wide transition-colors duration-300"
-              >
-                {t("hero.portalBtn")}
-              </Link>
             </motion.div>
           </div>
 
