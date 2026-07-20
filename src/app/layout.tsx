@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="font-sans antialiased text-brand-navy bg-brand-bg flex flex-col min-h-screen">
+      <body className="font-sans antialiased text-brand-navy bg-brand-bg flex flex-col min-h-screen overflow-x-hidden">
         <VisitorTracker />
         <LanguageProvider>
           <MainLayoutWrapper>
